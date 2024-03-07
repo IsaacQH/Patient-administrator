@@ -25,3 +25,4 @@ const Patient = () => {
 }
 
 export default Patient
+
