@@ -1,7 +1,7 @@
 
 const Form = () => {
   return (
-    <div className="md:w-1/2 lg:w-2/5">
+    <div className="md:w-1/2 lg:w-2/5 mb-10">
       <h2 className="font-black text-3xl text-center">Patient registration</h2>
 
       <p className="text-lg mt-5 text-center">
@@ -9,7 +9,7 @@ const Form = () => {
         <span className=" text-indigo-600 font-bold"> follow record</span>:
       </p>
 
-      <form className=" bg-white shadow-md rounded-lg px-5 py-10 mt-10 mb-15"> {/* Fondo blanco, sombra mediana, rounded border, padding x, padding y, margin top*/}
+      <form className=" bg-white shadow-2xl rounded-lg px-5 py-10 mt-10 mb-15"> {/* Fondo blanco, sombra mediana, rounded border, padding x, padding y, margin top*/}
 
         {/* CAMPO NOMBRE */}
         <div className=" mb-5">  
