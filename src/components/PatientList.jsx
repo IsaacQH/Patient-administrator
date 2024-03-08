@@ -1,7 +1,8 @@
 
 import Patient from "./Patient"
 
-const PatientList = () => {
+const PatientList = ({patients, setPatient}) => {
+
   return (
     <div className=" ml-5 md:w-1/2 lg:w-3/5">
 
@@ -13,12 +14,12 @@ const PatientList = () => {
       </p>
 
       <div className="md:h-[41rem] overflow-y-scroll">
-        <Patient/>
-        <Patient/>
-        <Patient/>
-        <Patient/>
-        <Patient/>
-        <Patient/>
+        {patients.map((patient) =>(                 //iteramos en el patients
+            <Patient 
+                patient = {patient}
+            />          //Le pasamos cada objeto al patient y lo imprime
+          ))}        {/* Cerrar con parentesis y no con corchetes */}
+
       </div>
 
 

@@ -15,7 +15,10 @@ function App() {
           patients = {patients}
           setPatient={setPatient} 
         />
-        <PatientList/>
+        <PatientList
+          patients = {patients}
+          setPatient={setPatient}
+        />
       </div>
     
     </div>
