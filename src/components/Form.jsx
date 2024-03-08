@@ -1,8 +1,8 @@
-
+import Error from "./Error"
 import { useState } from "react"
 
 
-const Form = () => {
+const Form = ({patients, setPatient}) => {
 
   const [nombre, setNombre] = useState('') //Declaración del state
   const [owner, setOwner] = useState('') //Declaración del state
@@ -10,9 +10,31 @@ const Form = () => {
   const [date, setDate] = useState('') //Declaración del state
   const [symptoms, setSymptoms] = useState('') //Declaración del state
 
+  const [error, setError] = useState(false)  //State para mensaje de error de form
+
   const handleSubmit = (e) => {
       e.preventDefault()    //Hace que el evento no recarge la página
-      console.log("Sending Form")
+
+      //VALIDAR FORMULARIO
+      if([nombre, owner, mail, date, symptoms].includes('')){
+        console.log("All fields must be filled.")
+        setError(true)
+        return
+      }
+      setError(false)     //Es lo mismo que quitar return y else{setError(false)}
+
+      //CREAR OBJETO PACIENTES
+      const objectPatient = {nombre, owner, mail, date, symptoms}  //Introduciendo los pacientes
+
+      setPatient([...patients, objectPatient])   //Esto se hace y no un push porque queremos usar métodos inmutables 
+                  //[Toma lo que haya en pacientes,    agrega lo nuevo]
+
+      //REINICIAR FORMULARIO
+      setNombre('')
+      setOwner('')
+      setMail('')
+      setDate('')
+      setSymptoms('')
   }
 
   return (
@@ -25,7 +47,7 @@ const Form = () => {
       </p>
 
       <form  onSubmit={handleSubmit} className=" bg-white shadow-2xl rounded-lg px-5 py-10 mt-10 mb-15 mx-5"> {/* Fondo blanco, sombra mediana, rounded border, padding x, padding y, margin top*/}
-
+        { error && <Error message ="All fields are required"/>}
         {/* CAMPO NOMBRE */}
         <div className=" mb-5">  
           <label htmlFor="pet" className="block text-gray-700 uppercase font-bold">Pet's Name</label> {/* bloque separa etiquetas*/}
