@@ -12,6 +12,13 @@ const Form = ({patients, setPatient}) => {
 
   const [error, setError] = useState(false)  //State para mensaje de error de form
 
+  function generateID(){             //Función que genera ID
+    const random = Math.random().toString(36).substr(2)   
+    const fecha = Date.now().toString(36)
+    const id = random + fecha
+    return id
+  }
+
   const handleSubmit = (e) => {
       e.preventDefault()    //Hace que el evento no recarge la página
 
@@ -24,7 +31,14 @@ const Form = ({patients, setPatient}) => {
       setError(false)     //Es lo mismo que quitar return y else{setError(false)}
 
       //CREAR OBJETO PACIENTES
-      const objectPatient = {nombre, owner, mail, date, symptoms}  //Introduciendo los pacientes
+      const objectPatient = {
+        nombre,
+        owner,
+        mail,
+        date,
+        symptoms,
+        id: generateID()
+      }  //Introduciendo los pacientes
 
       setPatient([...patients, objectPatient])   //Esto se hace y no un push porque queremos usar métodos inmutables 
                   //[Toma lo que haya en pacientes,    agrega lo nuevo]
