@@ -1,7 +1,7 @@
 
 import Patient from "./Patient"
 
-const PatientList = ({patients, setPatient}) => {
+const PatientList = ({patients, setPatient, setPaciente}) => {
 
   return (
     <div className=" ml-5 md:w-1/2 lg:w-3/5">
@@ -20,6 +20,8 @@ const PatientList = ({patients, setPatient}) => {
                 <Patient 
                     key = {patient.id}
                     patient = {patient}
+
+                    setPaciente = {setPaciente}
                 />          //Le pasamos cada objeto al patient y lo imprime
               ))}        {/* Cerrar con parentesis y no con corchetes */}
     

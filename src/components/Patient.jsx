@@ -1,6 +1,8 @@
 
+import { useEffect } from "react"
 
-const Patient = ({patient}) => {
+const Patient = ({patient, setPaciente}) => {
+
 
     const {nombre, owner, mail, date, symptoms} = patient
 
@@ -28,6 +30,8 @@ const Patient = ({patient}) => {
             <button
                 type="button"
                 className="py-2 px-10 bg-indigo-400 hover:bg-indigo-500 text-white font-bold uppercase rounded-lg"
+                onClick={() => setPaciente(patient)  /*Guarda al paciente hasta el App de forma anidada.*/}
+                
             >Edit</button>
                         <button
                 type="button"
