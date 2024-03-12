@@ -1,12 +1,25 @@
 import Header from "./components/Header"
 import Form from "./components/Form"
 import PatientList from "./components/PatientList"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
 
   const [patients, setPatient] = useState([]) //Declaracion del state principal que llevara la info del paciente (nombre, owner, etc)
   const [paciente, setPaciente] = useState({}) //Declaracion del state que se encargará de guardar al paciente para la edición o delete
+
+  useEffect(() => {
+    const patientsLS = JSON.parse(localStorage.getItem('pacientes')) || []; // Obtener los pacientes del Local Storage
+  
+    if (patientsLS.length > 0) { // Verificar si hay datos en el Local Storage
+      setPatient(patientsLS); // Inicializar el estado con los pacientes obtenidos
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('DONE')
+    localStorage.setItem('pacientes', JSON.stringify(patients))
+  }, [patients]) //Revisa cada que patients es modificado (cada que se agrega, edita o elimna)
 
   const eliminar = (id) => {   
     console.log('Deleting patient: ', id)

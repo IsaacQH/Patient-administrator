@@ -1,5 +1,4 @@
 
-import { useEffect } from "react"
 
 const Patient = ({patient, setPaciente, eliminar}) => {
 
@@ -8,9 +7,8 @@ const Patient = ({patient, setPaciente, eliminar}) => {
 
     const handleDelete = () =>{
         const answer = confirm("Are you sure you want to delete this patient?")
-        console.log(deleting)
 
-        if(answer == true){    //Si la respeusta es si
+        if(answer){    //Si la respeusta es si
             eliminar(id)       //Se elimina con prop function de App
         }
     }
