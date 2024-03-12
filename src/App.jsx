@@ -8,6 +8,12 @@ function App() {
   const [patients, setPatient] = useState([]) //Declaracion del state principal que llevara la info del paciente (nombre, owner, etc)
   const [paciente, setPaciente] = useState({}) //Declaracion del state que se encargará de guardar al paciente para la edición o delete
 
+  const eliminar = (id) => {   
+    console.log('Deleting patient: ', id)
+    const patientsUpdate = patients.filter( value => value.id !== id)
+    setPatient(patientsUpdate)
+  }
+
   return (
     <div className="container mx-auto mt-20">  {/*Se hace un contenedor y le damos un margin iz y d de plano X de auto para centrar, margin top de 20 unidades*/}
       <Header/>
@@ -25,6 +31,8 @@ function App() {
 
           paciente = {paciente  /* Le pasamos el objeto del paciente*/}
           setPaciente={setPaciente}
+
+          eliminar = {eliminar}
         />
       </div>
     
